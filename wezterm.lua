@@ -75,7 +75,7 @@ config.font_rules = {
 config.font_size = 12.5
 config.cell_width = 1.2
 config.line_height = 1.1
-config.underline_position = -3
+config.underline_position = '-0.13cell'
 
 config.initial_rows = 36
 config.initial_cols = 127
