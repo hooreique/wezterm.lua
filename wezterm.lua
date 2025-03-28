@@ -88,10 +88,70 @@ config.window_frame = {
   font_size = 10,
 }
 
-wezterm.on('gui-startup', function()
-  wezterm.mux.spawn_window {
+wezterm.on('gui-startup', function(cmd)
+  wezterm.mux.spawn_window(cmd or {
     position = { x = 260, y = 80, origin = 'MainScreen' }
+  })
+end)
+
+---@diagnostic disable-next-line: unused-local
+wezterm.on('custom-alt-n', function(window, pane)
+  wezterm.mux.spawn_window {
+    position = { x = 260, y = 80, origin = 'MainScreen' },
   }
 end)
+
+config.disable_default_key_bindings = true
+config.adjust_window_size_when_changing_font_size = false
+config.keys = {
+  {
+    key = 't',
+    mods = 'ALT',
+    action = wezterm.action.SpawnTab 'CurrentPaneDomain',
+  },
+  {
+    key = 'n',
+    mods = 'ALT',
+    action = wezterm.action.EmitEvent 'custom-alt-n',
+  },
+  {
+    key = 'c',
+    mods = 'ALT',
+    action = wezterm.action.CopyTo 'Clipboard',
+  },
+  {
+    key = 'v',
+    mods = 'ALT',
+    action = wezterm.action.PasteFrom 'Clipboard',
+  },
+  {
+    key = '=',
+    mods = 'ALT',
+    action = wezterm.action.IncreaseFontSize,
+  },
+  {
+    key = '-',
+    mods = 'ALT',
+    action = wezterm.action.DecreaseFontSize,
+  },
+  {
+    key = '0',
+    mods = 'ALT',
+    action = wezterm.action.ResetFontSize,
+  },
+  {
+    key = 'f',
+    mods = 'ALT',
+    action = wezterm.action.ToggleFullScreen,
+  },
+}
+
+for i = 1, 9 do
+  table.insert(config.keys, {
+    key = tostring(i),
+    mods = 'ALT',
+    action = wezterm.action.ActivateTab(i - 1),
+  })
+end
 
 return config
