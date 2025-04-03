@@ -6,8 +6,6 @@ config.default_domain = 'WSL:Ubuntu-24.04'
 
 config.color_scheme = 'Sonokai (Gogh)'
 
-config.font = wezterm.font 'D2Coding'
-
 config.font_rules = {
   {
     intensity = 'Half',
@@ -68,13 +66,11 @@ config.font_rules = {
   },
 }
 
-config.font_size = 12.5
-config.cell_width = 1.2
-config.line_height = 1.1
-config.underline_position = '-0.13cell'
+config.font_size = 12.75
+config.underline_position = '-0.15cell'
 
-config.initial_rows = 36
-config.initial_cols = 127
+config.initial_rows = 32
+config.initial_cols = 136
 
 config.window_decorations = 'INTEGRATED_BUTTONS|RESIZE'
 config.window_padding = { top = 0, left = 0, bottom = 0, right = 0 }
@@ -86,14 +82,14 @@ config.window_frame = {
 
 wezterm.on('gui-startup', function(cmd)
   wezterm.mux.spawn_window(cmd or {
-    position = { x = 260, y = 80, origin = 'MainScreen' }
+    position = { x = 270, y = 80, origin = 'MainScreen' }
   })
 end)
 
 ---@diagnostic disable-next-line: unused-local
 wezterm.on('custom-alt-n', function(window, pane)
   wezterm.mux.spawn_window {
-    position = { x = 260, y = 80, origin = 'MainScreen' },
+    position = { x = 270, y = 80, origin = 'MainScreen' },
   }
 end)
 
