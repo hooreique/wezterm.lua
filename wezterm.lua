@@ -66,11 +66,12 @@ config.font_rules = {
   },
 }
 
-config.font_size = 12.75
-config.underline_position = '-0.15cell'
+config.font_size = 14
+config.line_height = 0.9
+config.underline_position = '-0.1cell'
 
-config.initial_rows = 32
-config.initial_cols = 136
+config.initial_rows = 27
+config.initial_cols = 99
 
 config.window_decorations = 'INTEGRATED_BUTTONS|RESIZE'
 config.window_padding = { top = 0, left = 0, bottom = 0, right = 0 }
@@ -82,14 +83,14 @@ config.window_frame = {
 
 wezterm.on('gui-startup', function(cmd)
   wezterm.mux.spawn_window(cmd or {
-    position = { x = 270, y = 80, origin = 'MainScreen' }
+    position = { x = 400, y = 120, origin = 'MainScreen' }
   })
 end)
 
 ---@diagnostic disable-next-line: unused-local
 wezterm.on('custom-alt-n', function(window, pane)
   wezterm.mux.spawn_window {
-    position = { x = 270, y = 80, origin = 'MainScreen' },
+    position = { x = 400, y = 120, origin = 'MainScreen' },
   }
 end)
 
