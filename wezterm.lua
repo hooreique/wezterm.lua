@@ -83,14 +83,14 @@ config.window_frame = {
 
 wezterm.on('gui-startup', function(cmd)
   wezterm.mux.spawn_window(cmd or {
-    position = { x = 400, y = 120, origin = 'MainScreen' }
+    position = { x = 420, y = 120, origin = 'MainScreen' }
   })
 end)
 
 ---@diagnostic disable-next-line: unused-local
 wezterm.on('custom-alt-n', function(window, pane)
   wezterm.mux.spawn_window {
-    position = { x = 400, y = 120, origin = 'MainScreen' },
+    position = { x = 420, y = 120, origin = 'MainScreen' },
   }
 end)
 
