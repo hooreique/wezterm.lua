@@ -94,8 +94,9 @@ wezterm.on('custom-alt-n', function(window, pane)
   }
 end)
 
-config.disable_default_key_bindings = true
+config.canonicalize_pasted_newlines = 'None'
 config.adjust_window_size_when_changing_font_size = false
+config.disable_default_key_bindings = true
 config.keys = {
   {
     key = 't',
