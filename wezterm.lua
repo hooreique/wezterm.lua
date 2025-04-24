@@ -70,8 +70,8 @@ config.font_size = 14
 config.line_height = 0.9
 config.underline_position = '-0.1cell'
 
-config.initial_rows = 27
-config.initial_cols = 99
+config.initial_rows = 29
+config.initial_cols = 103
 
 config.window_decorations = 'INTEGRATED_BUTTONS|RESIZE'
 config.window_padding = { top = 0, left = 0, bottom = 0, right = 0 }
