@@ -99,13 +99,8 @@ config.adjust_window_size_when_changing_font_size = false
 config.disable_default_key_bindings = true
 config.keys = {
   {
-    key = 't',
-    mods = 'ALT',
-    action = wezterm.action.SpawnTab 'CurrentPaneDomain',
-  },
-  {
     key = 'n',
-    mods = 'ALT',
+    mods = 'ALT | SHIFT',
     action = wezterm.action.EmitEvent 'custom-alt-n',
   },
   {
@@ -139,13 +134,5 @@ config.keys = {
     action = wezterm.action.ToggleFullScreen,
   },
 }
-
-for i = 1, 9 do
-  table.insert(config.keys, {
-    key = tostring(i),
-    mods = 'ALT',
-    action = wezterm.action.ActivateTab(i - 1),
-  })
-end
 
 return config
