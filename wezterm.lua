@@ -73,7 +73,7 @@ config.underline_position = '-0.1cell'
 config.initial_rows = 29
 config.initial_cols = 103
 
-config.window_decorations = 'INTEGRATED_BUTTONS|RESIZE'
+config.window_decorations = 'INTEGRATED_BUTTONS | RESIZE'
 config.window_padding = { top = 0, left = 0, bottom = 0, right = 0 }
 config.window_background_opacity = 0.95
 config.window_frame = {
@@ -88,7 +88,7 @@ wezterm.on('gui-startup', function(cmd)
 end)
 
 ---@diagnostic disable-next-line: unused-local
-wezterm.on('custom-alt-n', function(window, pane)
+wezterm.on('custom-alt-shift-n', function(window, pane)
   wezterm.mux.spawn_window {
     position = { x = 420, y = 120, origin = 'MainScreen' },
   }
@@ -101,7 +101,7 @@ config.keys = {
   {
     key = 'n',
     mods = 'ALT | SHIFT',
-    action = wezterm.action.EmitEvent 'custom-alt-n',
+    action = wezterm.action.EmitEvent 'custom-alt-shift-n',
   },
   {
     key = 'c',
