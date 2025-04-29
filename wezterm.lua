@@ -2,6 +2,10 @@ local wezterm = require 'wezterm'
 
 local config = wezterm.config_builder()
 
+-- https://wezterm.org/config/lua/config/term.html
+-- https://github.com/wezterm/wezterm/blob/main/termwiz/data/wezterm.terminfo
+config.term = 'wezterm'
+
 config.default_domain = 'WSL:Ubuntu-24.04'
 
 config.color_scheme = 'Sonokai (Gogh)'
