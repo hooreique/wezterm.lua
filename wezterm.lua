@@ -74,9 +74,6 @@ config.font_size = 14
 config.line_height = 0.9
 config.underline_position = '-0.1cell'
 
-config.initial_rows = 29
-config.initial_cols = 103
-
 config.window_decorations = 'INTEGRATED_BUTTONS | RESIZE'
 config.window_padding = { top = 0, left = 0, bottom = 0, right = 0 }
 config.window_background_opacity = 0.95
@@ -86,22 +83,59 @@ config.window_frame = {
 }
 
 wezterm.on('gui-startup', function(cmd)
-  wezterm.mux.spawn_window(cmd or {
-    position = { x = 420, y = 120, origin = 'MainScreen' }
-  })
+  local _, _, muxwin = wezterm.mux.spawn_window(cmd or {})
+  local win = muxwin:gui_window()
+
+  win:set_position(420, 120)
+  win:set_inner_size(1080, 640)
 end)
 
----@diagnostic disable-next-line: unused-local
-wezterm.on('custom-alt-shift-n', function(window, pane)
-  wezterm.mux.spawn_window {
-    position = { x = 420, y = 120, origin = 'MainScreen' },
-  }
+wezterm.on('custom-alt-shift-n', function()
+  local _, _, muxwin = wezterm.mux.spawn_window {}
+  local win = muxwin:gui_window()
+
+  win:set_position(420, 120)
+  win:set_inner_size(1080, 640)
 end)
+
+local function toggle_zoom()
+  local zoom = false
+
+  return function(win)
+    local o = win:get_config_overrides() or {}
+
+    if zoom then
+      zoom = false
+      o.font_size = 14
+      win:set_position(420, 120)
+      win:set_inner_size(1080, 640)
+    else
+      zoom = true
+      o.font_size = 18.2
+      win:set_position(106, 45)
+      win:set_inner_size(1708, 921)
+    end
+
+    win:set_config_overrides(o)
+  end
+end
+
+wezterm.on('custom-alt-f', toggle_zoom())
 
 config.canonicalize_pasted_newlines = 'None'
 config.adjust_window_size_when_changing_font_size = false
 config.disable_default_key_bindings = true
 config.keys = {
+  {
+    key = 'd',
+    mods = 'ALT | SHIFT',
+    action = wezterm.action.ShowDebugOverlay,
+  },
+  {
+    key = 'f',
+    mods = 'ALT',
+    action = wezterm.action.EmitEvent 'custom-alt-f',
+  },
   {
     key = 'n',
     mods = 'ALT | SHIFT',
@@ -131,11 +165,6 @@ config.keys = {
     key = '0',
     mods = 'ALT',
     action = wezterm.action.ResetFontSize,
-  },
-  {
-    key = 'f',
-    mods = 'ALT',
-    action = wezterm.action.ToggleFullScreen,
   },
 }
 
