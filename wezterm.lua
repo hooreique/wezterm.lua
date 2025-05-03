@@ -152,6 +152,14 @@ config.keys = {
     action = wezterm.action.PasteFrom 'Clipboard',
   },
   {
+    key = 'k',
+    mods = 'ALT',
+    action = wezterm.action.Multiple {
+      wezterm.action.ClearScrollback 'ScrollbackOnly',
+      wezterm.action.SendKey { key = 'k', mods = 'ALT' },
+    },
+  },
+  {
     key = '=',
     mods = 'ALT',
     action = wezterm.action.IncreaseFontSize,
