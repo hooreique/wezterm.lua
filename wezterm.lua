@@ -6,6 +6,8 @@ local config = wezterm.config_builder()
 -- https://github.com/wezterm/wezterm/blob/main/termwiz/data/wezterm.terminfo
 config.term = 'wezterm'
 
+config.set_environment_variables = { COLORTERM = 'truecolor' }
+
 config.default_domain = 'WSL:Ubuntu-24.04'
 
 config.color_scheme = 'Sonokai (Gogh)'
