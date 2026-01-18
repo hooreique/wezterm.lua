@@ -10,7 +10,29 @@ config.set_environment_variables = { COLORTERM = 'truecolor' }
 
 config.default_domain = 'WSL:Ubuntu-24.04'
 
-config.color_scheme = 'Sonokai (Gogh)'
+config.color_schemes = {
+  sonokai = {
+    foreground = '#E1E3E4',
+    background = '#2A2F38',
+    cursor_bg = '#E1E3E4',
+    cursor_fg = '#2A2F38',
+    cursor_border = '#E1E3E4',
+    selection_fg = '#E1E3E4',
+    selection_bg = '#3D4455',
+    ansi = {
+      '#2A2F38','#FF6578','#9DD274','#EACB64',
+      '#F69C5E','#BA9CF3','#72CCE8','#E1E3E4',
+    },
+    brights = {
+      '#828A9A','#FF6578','#9DD274','#EACB64',
+      '#F69C5E','#BA9CF3','#72CCE8','#E1E3E4',
+    },
+  },
+}
+
+config.color_scheme = 'sonokai'
+
+-- config.color_scheme = 'Sonokai (Gogh)'
 
 config.font_rules = {
   {
